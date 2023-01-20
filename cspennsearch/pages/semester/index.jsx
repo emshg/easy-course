@@ -5,7 +5,7 @@ import { Switch } from '@nextui-org/react';
 import Link from 'next/link';
 
 export default function Semester() {
-    
+    const [semester, setSemester] = useState(1);
     return(
       <div className="container">
       <Head>
@@ -14,7 +14,7 @@ export default function Semester() {
       </Head>
       <main style={{backgroundColor:'#D291CC99'}}>
         <Switch style={{transform: "rotate(90deg)", position:"absolute", 
-        top:400, left: 420, height:"5rem !important", width:"10em !important"}}></Switch>
+        top:400, left: 420, height:"5rem !important", width:"10em !important"}} />
         <Image 
           src="/P2/column1.svg"
           alt="semester background"
@@ -22,7 +22,10 @@ export default function Semester() {
           width={1050}
             style={{ zIndex: 1, objectFit: "cover"}}
         />
-        <Link href="/workload"><Image 
+        <Link href={{
+            pathname: "/workload",
+            query: semester
+        }}><Image 
           src="/P2/column 2.svg"
           alt="semester background"
           height={900}
