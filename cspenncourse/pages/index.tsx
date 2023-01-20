@@ -1,14 +1,11 @@
 import Head from 'next/head'
+import Image from 'next/image'
 import React, {useState, useEffect} from 'react'
 import clientPromise from '../lib/mongodb'
-import { InferGetServerSidePropsType } from 'next'
-
-
-
-
+import Link from 'next/link'
 export default function Home() {
 
-  const [courseData, setCourseData] = useState([]);
+const [courseData, setCourseData] = useState([]);
 const [isLoading, setLoading] = useState(false);
 
 useEffect(() => {
@@ -26,21 +23,48 @@ useEffect(() => {
   fetchCourseData();
   }, []);
 
-
   if (isLoading) return( <p>Loading...</p>)
   return (
     <div className="container">
       <Head>
-        <title>Create Next App</title>
+        <title>CSPennSearch</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main>
-        <h1 className="title">
+        {/* <h1 className="title">
           Welcome to <a href="https://nextjs.org">Next.js with MongoDB!</a>
-        </h1>
+        </h1> */}
+        <Link href="/semester">
+        <button className="startbutton">
+        <Image 
+          src="/P1/startbtn.svg"
+          alt="button"
+          width={180}
+          height={75}
+          style={{ zIndex: 1 }}
+        />
+        </button>
+        </Link>
+        {/* <div className="overlay"> */}
+        {/* </div> */}
 
-        <div className="grid">
+        <Image 
+          className="bgimage"
+          src="/backgroundp1.png"
+          alt="web background"
+          fill
+          style={{ zIndex: -1, objectFit: "cover", height:"100%"}}
+        />
+        <Image 
+          src="/P1/supp.svg"
+          alt="foryou"
+          width={700}
+          height={300}
+          style={{ zIndex: 1 , position: "absolute", top: 380, left: 588}}
+        />
+
+        {/* <div className="grid">
           <a href="https://nextjs.org/docs" className="card">
             <h3>Documentation &rarr;</h3>
             <p>Find in-depth information about Next.js features and API.</p>
@@ -70,19 +94,33 @@ useEffect(() => {
               Instantly deploy your Next.js site to a public URL with Vercel.
             </p>
           </a>
-        </div>
-      </main>
+        </div> */}
 
-      <footer>
-        <a
+      <Image 
+          className="bgimage"
+          src="/P1/KFC.svg"
+          alt="footnote"
+          width={300}
+          height={30}
+          style={{ zIndex: 1 , position: "absolute", bottom: 0}}
+        />
+        <Image 
+          src="/P1/pic.svg"
+          alt="banner"
+          width={1200}
+          height={500}
+          style={{ zIndex: 1 , position: "absolute", top: 0, objectFit:"contain"}}
+        />
+        {/* <a
           href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
           target="_blank"
           rel="noopener noreferrer"
         >
           Powered by{' '}
           <img src="/vercel.svg" alt="Vercel Logo" className="logo" />
-        </a>
-      </footer>
+        </a> */}
+
+      </main>
 
       <style jsx>{`
         .container {
@@ -92,6 +130,14 @@ useEffect(() => {
           flex-direction: column;
           justify-content: center;
           align-items: center;
+        }
+
+        .bgimage {
+          z-index: -20;
+        }
+
+        .topimage {
+          z-index: 10;
         }
 
         main {
@@ -158,6 +204,36 @@ useEffect(() => {
           font-size: 1.5rem;
         }
 
+        .startbutton {
+          background-color:#1F822F;
+          position: absolute;
+          width: 244px;
+          height: 77px;
+          left: 220px;
+          top: 490px;
+          border-radius: 11px;
+          border: 0;
+          transition: .5s ease;
+        }
+
+        .startbutton:hover {
+          background-color:#4CAF50;
+          cursor: pointer;
+          transition: .5s ease;
+        }
+
+        .startbutton Image {
+          cursor: pointer;
+          display: inline-block;
+          position: relative;
+          transition: 0.5s;
+        }
+
+        /* .startbutton:click {
+          background-color:#4CAF50;
+          transition: .5s ease;
+        } */
+
         code {
           background: #fafafa;
           border-radius: 5px;
@@ -215,6 +291,7 @@ useEffect(() => {
           .grid {
             width: 100%;
             flex-direction: column;
+            z-index:1;
           }
         }
       `}</style>
