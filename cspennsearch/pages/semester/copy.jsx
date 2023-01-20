@@ -9,10 +9,10 @@ export default function Semester(){
     return (
         <div>
             <p>Hello</p>
-        {/* <LiquidSwipe
+        <LiquidSwipe
             components={componentsToRender}
             colors={backgroundColors}
-        /> */}
+        />
         </div>
     );
 }

@@ -1,9 +1,11 @@
 import Image from 'next/image'
 import Head from 'next/head'
 import React, {useState, useEffect, useRef} from 'react'
-import * as Switch from '@radix-ui/react-switch';
+import { Switch } from '@nextui-org/react';
+import Link from 'next/link';
 
 export default function Semester() {
+    
     return(
       <div className="container">
       <Head>
@@ -11,9 +13,8 @@ export default function Semester() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main style={{backgroundColor:'#D291CC99'}}>
-        <Switch.Root>
-            <Switch.Thumb />
-        </Switch.Root>
+        <Switch style={{transform: "rotate(90deg)", position:"absolute", 
+        top:400, left: 420, height:"5rem !important", width:"10em !important"}}></Switch>
         <Image 
           src="/P2/column1.svg"
           alt="semester background"
@@ -21,15 +22,16 @@ export default function Semester() {
           width={1050}
             style={{ zIndex: 1, objectFit: "cover"}}
         />
-        <Image 
+        <Link href="/workload"><Image 
           src="/P2/column 2.svg"
           alt="semester background"
           height={900}
           width={150}
             style={{ zIndex: 1, objectFit: "cover", position:"relative", left:-52}}
         />
+        </Link>
 
-<Image 
+        <Image 
           src="/P2/column 3.svg"
           alt="semester background"
           height={900}
@@ -39,7 +41,6 @@ export default function Semester() {
 
       </main>
       <style jsx>{`
-
         .title {
           margin: 0;
           line-height: 1.15;
@@ -64,7 +65,7 @@ export default function Semester() {
         }
 
         .SwitchThumb {
-            display: block;
+            /* display: block; */
             width: 100px;
             height: 200px;
             background-color: white;
