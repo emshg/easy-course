@@ -3,6 +3,8 @@ import Image from 'next/image'
 import React, {useState, useEffect} from 'react'
 import clientPromise from '../lib/mongodb'
 import Link from 'next/link'
+
+
 export default function Home() {
 
 const [courseData, setCourseData] = useState([]);
