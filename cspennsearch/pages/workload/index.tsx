@@ -3,10 +3,11 @@ import Head from 'next/head'
 import React, {useState, useEffect, useRef} from 'react'
 import { Radio, Text, Spacer } from "@nextui-org/react";
 import Link from 'next/link';
+import { useSearchParams } from 'next/navigation'
 
 export default function Semester() {
     const [checked, setChecked] = useState('');
-
+    const params = useSearchParams();
     return(
       <div className="container">
       <Head>
@@ -33,30 +34,35 @@ export default function Semester() {
         value={checked}
         onChange={setChecked}
       >
-        <div style={{position:'absolute !important', top:"150px", left:"387px", width:"200px"}}>
-        <Radio value="Low" style={{height:"5rem !important", width:"5rem !important"}}></Radio>
+        <div style={{position:'absolute !important', top:"142px", left:"383px", width:"200px"}}>
+        <Radio value="Low" color='success' size='xl' isSquared style={{height:"5rem !important", width:"5rem !important", zIndex:20}}></Radio>
         </div>
-        <div style={{position:'absolute !important', top:"22px", left:"606px"}}>
-        <Radio value="Medium" ></Radio>
+        <div style={{position:'absolute !important', top:"10px", left:"602px", zIndex:20}}>
+        <Radio value="Medium" color='primary' isSquared size='xl'></Radio>
         </div>
-        <div style={{position:'absolute !important', top:"-110px", left:"914px"}}>
-        <Radio value="High"></Radio>
+        <div style={{position:'absolute !important', top:"-112px", left:"910px", zIndex:20}}>
+        <Radio value="High" color='secondary' isSquared size='xl'></Radio>
         </div>
 
       </Radio.Group>
       {/* <Spacer y={1} style={{position:'absolute !important', top:"320px ! important"}}/> */}
-      <Text style={{position:'absolute', zIndex:20,fontWeight:600,fontSize:30, width:"400px",top:"200px",left:"800px"}}>Workload: {checked}</Text>
+      <Text color='secondary' style={{position:'absolute', zIndex:20,fontWeight:600,fontSize:30, width:"400px",top:"-200px",left:"500px"}}>Workload: {checked}</Text>
       </div>
+
       <Link href={{
             pathname: "/tagging",
-            query: checked
+            query: {
+              semester: params.get('semester'),
+              workload: checked
+            }
         }}>
+
         <Image 
           src="/P3/Group 19.svg"
           alt="semester background"
           height={900}
           width={150}
-            style={{ zIndex: 1, objectFit: "cover", position:"absolute ! important", right:50, top:0}}
+            style={{ zIndex: 1, objectFit: "cover", position:"absolute", right:50, top:0}}
         />
         </Link>
 

@@ -7,7 +7,7 @@ import Link from 'next/link'
 
 export default function Home() {
 
-const [courseData, setCourseData] = useState([]);
+const [courseData, setCourseData] = useState(Array());
 const [isLoading, setLoading] = useState(false);
 
 useEffect(() => {
